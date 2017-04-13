@@ -1,14 +1,14 @@
 
 all: test
 	
-test:  main.o ant.o board.o
-	g++ main.o ant.o board.o -o test
+test:  main.o Ant.o Board.o
+	g++ main.o Ant.o Board.o -o test
 
 main.o: main.cpp
 	g++ -c main.cpp
 
-ant.o: ant.cpp
-	g++ -c ant.cpp
+Ant.o: Ant.cpp
+	g++ -c Ant.cpp
 
-board.o: board.cpp
-	g++ -c board.cpp
+Board.o: Board.cpp
+	g++ -c Board.cpp

@@ -9,6 +9,9 @@
 //menu function prototype
 void menu();
 
+//input validation prototype
+void integerInputValid(int &variable, int lowerBound, int upperBound);
+
 int main()
 {
 	menu();	
@@ -17,9 +20,10 @@ int main()
 }
 
 
-
+//Menu function from assignment spec
 void menu()
 {
+	//User will later decide if they want to play again, initialized to true so program will run on first go
 	bool playAgain = true;
 	
 	while(playAgain){
@@ -35,38 +39,42 @@ void menu()
 	std::cout << "2.  NO [END PROGRAM] " << std::endl;
 
 	int optionChoice;
-	std::cin >> optionChoice;
+	integerInputValid(optionChoice, 1, 2);
 
+
+	//Decision tree based on user input
 	switch(optionChoice)
 	{
 		case 1:	
 		{		//inquire size
 				int boardSize;
-				std::cout << "\nWhat size is our board today? (recommended between 20-50): " << std::endl;
-				std::cin >> boardSize;
+				std::cout << "\nWhat size is our board today? (Between 20-50): " << std::endl;
+				integerInputValid(boardSize,20,50);
 
 				//inquire steps
 				int steps;
-				std::cout << "\nHow many steps should the Ant take? (Lets keep it < 32,000ish plz) " << std::endl;
-				std::cin >> steps;
+				std::cout << "\nHow many steps should the Ant take? (Between 1-10,000) " << std::endl;
+				integerInputValid(steps,1,10000);
 
-				//inquire start location or random location
+				//inquire chosen location or RANDOM LOCATION 
 				std::cout << "\nWould you like to choose where the Ant starts or would you like us to place it randomly?" << std::endl;
 				int randomStart;
 				int xCoord, yCoord;
 
-				std::cout << "1. I'LL CHOOSE MY OWN, PLZ [NON-RANDOM] " << std::endl;
+				//More options listing
+				std::cout << "1. I'LL CHOOSE MY OWN, PLEASE [NON-RANDOM] " << std::endl;
 				std::cout << "2. YOU CHOOSE FOR ME [RANDOM] " << std::endl;
-				std::cin >> randomStart;				
+				integerInputValid(randomStart,1,2);				
 
 				switch(randomStart)
-				{
-					case 1:		std::cout << "Imagine you're looking at a coordinate plane, your run of the mill X & Y 2-D plane...\n" << std::endl;
-							std::cout << "Starting at 1, what is your horizontal X-Coordinate? " << std::endl;
-							std::cin >> xCoord;
-							std::cout << "Starting at 1, what is your vertical Y-Coordinate? " << std::endl;
-							std::cin >> yCoord;
+				{			//User chosen start points
+					case 1:		std::cout << "Imagine you're looking at a 2-D coordinate plane, your 'run-of-the-mill' positive X & Y...\n" << std::endl;
+							std::cout << "Starting at 1, and less than " << boardSize << " what is your horizontal X-Coordinate? " << std::endl;
+							integerInputValid(xCoord,1,boardSize);
+							std::cout << "Starting at 1, and less than " << boardSize << " what is your vertical Y-Coordinate? " << std::endl;
+							integerInputValid(yCoord,1,boardSize);
 
+							//Conversion to 'traditional x-y coordinate plane look
 							xCoord -= 1;
 							yCoord = boardSize - yCoord;
 							break;
@@ -85,8 +93,8 @@ void menu()
 				Ant newGame(boardSize, xCoord, yCoord);
 				for (int i = 0; i < steps; i++)
 				{	
-					std::cout << "\nSTEP: " << i+1 << std::endl;
-					newGame.step();
+					std::cout << "\nSTEP: " << i+1 << std::endl; //Print game
+					newGame.step();  // Step through an iteration
 				}
 
 				//ask if they want to play again
@@ -94,20 +102,21 @@ void menu()
 				std::cout << "1.  YES [PLAY AGAIN]" << std::endl;
 				std::cout << "2.  NO [DON'T PLAY AGAIN]" << std::endl;
 				int again;
-				std::cin >> again;
+				integerInputValid(again,1,2);
 
 				switch(again)
 				{
 					case 1:  break;
-
+					
+					//quit
 					case 2:  playAgain = false;
 						 break;	
 
 				}
 
-				//break
 				break;
-		}			
+		}		
+	
 		case 2:
 		{		//quit
 				playAgain = false;
@@ -115,10 +124,19 @@ void menu()
 		}
 	}
 				
-	}
-
-
-
+}
 
 }
 
+//Input validation function from text
+
+void integerInputValid(int &variable, int lowerBound, int upperBound)
+{
+	while((variable<lowerBound)||(variable>upperBound))
+	{
+		std::cin >> variable;
+
+		if((variable<lowerBound)||(variable>upperBound))
+			std::cout << "Please enter a valid choice between " << lowerBound << " and " << upperBound << std::endl;
+	}
+}
