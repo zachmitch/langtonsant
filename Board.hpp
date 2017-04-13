@@ -1,3 +1,9 @@
+/*******************************************************************
+Name - Zach Mitchell
+Date - 4/13/17
+Desc - This file contains the prototypes for functions found in Board.cpp
+**************************************************************************/
+
 #ifndef BOARD_HPP
 #define BOARD_HPP
 

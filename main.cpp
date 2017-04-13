@@ -1,3 +1,10 @@
+/************************************************************************
+Name - Zach Mitchell
+Date - 4/13/17
+This file contains the execution for Langton's Ant, as well as the generic
+menu and input validation functions described in the spec
+**************************************************************************/
+
 #include <iostream>
 #include <string>
 #include <time.h>
@@ -19,8 +26,10 @@ int main()
 	return 0;
 }
 
-
+/******************************************
 //Menu function from assignment spec
+******************************************/
+
 void menu()
 {
 	//User will later decide if they want to play again, initialized to true so program will run on first go
@@ -128,7 +137,10 @@ void menu()
 
 }
 
+/********************************************
 //Input validation function from text
+//Takes in the reference variable, the lower bound and the upper bound
+************************************************************/
 
 void integerInputValid(int &variable, int lowerBound, int upperBound)
 {

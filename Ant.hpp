@@ -1,3 +1,10 @@
+/*******************************************************************
+Name - Zach Mitchell
+Date - 4/13/17
+Desc - This file contains the function prototypes for the ant class
+**************************************************************************/
+
+
 #ifndef ANT_HPP
 #define ANT_HPP
 #include "Board.hpp"
