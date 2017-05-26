@@ -1,5 +1,5 @@
 
-all: test clean
+all: test
 	
 test:  main.o Ant.o Board.o
 	g++ main.o Ant.o Board.o -o test
@@ -12,6 +12,3 @@ Ant.o: Ant.cpp
 
 Board.o: Board.cpp
 	g++ -c Board.cpp
-
-clean:
-	rm -f main Ant Board *.o
