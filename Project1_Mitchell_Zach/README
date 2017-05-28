@@ -1,9 +1,0 @@
-Copyright 2017
-Zach Mitchell
-Langton's Ant
-
-Here we have the famous mathematical automaton written in C++.
-
-To compile this program simply open up this directory in terminal and type "make all".
-
-To run the program type "./test" or "test" based on your machines setup.

@@ -23,14 +23,25 @@ Ant::Ant(int boardSize, int xCoord, int yCoord)
 }
 
 /*************************************
+Destructor, manages dynamic memory
+***************************************/
+Ant::~Ant()
+{
+	delete board;
+}
+/*************************************
 Utilizes the separate SetAnt and printBoard functions from the Board object to
 display the current state of the automaton to the user
 ******************************************/
+
+
+
 
 void Ant::printAnt()
 {
 	board->setAnt(yCoord, xCoord);
 	board->printBoard();
+
 }
 
 /******************************************

@@ -146,11 +146,17 @@ void menu()
 
 void integerInputValid(int &variable, int lowerBound, int upperBound)
 {
-	while((variable<lowerBound)||(variable>upperBound))
-	{
-		std::cin >> variable;
+	 
+	std::cin >> variable;        
 
-		if((variable<lowerBound)||(variable>upperBound))
-			std::cout << "Please enter a valid choice between " << lowerBound << " and " << upperBound << std::endl;
+	while((std::cin.fail()) || ((variable<lowerBound)||(variable>upperBound)))
+	{
+      	        std::cout << "PLEASE ENTER A VALID CHOICE BETWEEN " << lowerBound << " AND " << upperBound << std::endl;
+
+		//Found the use of cin.clear() and cin.ignore from LearnCPP.com
+		std::cin.clear();
+		std::cin.ignore(1000, '\n' );
+		std::cin >> variable;
+	
 	}
 }

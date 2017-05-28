@@ -17,6 +17,7 @@ class Ant{
 	
 	public:
 	Ant(int boardSize, int xCoord, int yCoord);
+	~Ant();
 	enum Direction {up, right, down, left};
 	Direction dir;
 	Board *board;
